@@ -14,9 +14,12 @@ const userSchema=mongoose.Schema({
         type:String,
         // required:true
     },
-    blog:{
-    type:[Object]
+    image:{
+        type:String
     }
+    // blog:{
+    // type:[Object]
+    // }
 },{
     strict:false,
     versionKey:false,

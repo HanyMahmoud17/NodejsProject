@@ -1,3 +1,4 @@
+const { strict } = require('assert');
 const mongoose=require('mongoose');
 const express=require('express');
 const app=express();
@@ -5,10 +6,10 @@ const app=express();
 const Schema=mongoose;
 
 const blogSchema=mongoose.Schema({
-    autherId:{
-        type:Schema.Types.ObjectId,
-        ref: 'User'
-    },
+    // autherId:{
+    //     type:Schema.Types.ObjectId,
+    //     ref: 'User'
+    // },
     title:{
         type:String,
         // required:true
@@ -17,13 +18,14 @@ const blogSchema=mongoose.Schema({
         type:String,
         // required:true
     },
-    photo:{
+    image:{
         type:String,
-        required:false
+        // required:false
     },
     tags:{
         type:[String]
-    }
+    },
+    publisher:Object,
 },{
     strict:false,
     versionKey:false,

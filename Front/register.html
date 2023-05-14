@@ -97,7 +97,7 @@ input[type="password"]:focus {
 <body>
     <div id="container">
          <header>Register new account</header>
-         <form action="register" method="post">
+         <form action="register" method="post" enctype="multipart/form-data">
             <fieldset>
                <br/>
                <input type="text" name="name" id="name" placeholder="Username" required autofocus>
@@ -105,9 +105,11 @@ input[type="password"]:focus {
                <input type="email" name="email" id="email" placeholder="E-mail" required>
                <br/><br/>
                <input type="password" name="password" id="password" placeholder="Password" required>
+               <br/><br/>
+               <input type="file" name="image" id="image" required>
                <br/> <br/> <br/>
                <label for="submit"></label>
-               <input type="submit" name="submit" id="submit" onclick="register()" value="REGISTER">
+               <input type="submit" name="submit" id="submit" value="REGISTER">
             </fieldset>
          </form>
       </div>
@@ -117,11 +119,12 @@ input[type="password"]:focus {
       let name = document.getElementById('name').value;
       let email = document.getElementById('email').value;
       let password = document.getElementById('password').value
+      let image = document.getElementById('image').src
       // console.log(id);
       fetch(`http://localhost:3500/author/register`,
         {
           method: 'post',
-          body: JSON.stringify({ name, email,password }),
+          body: JSON.stringify({ name, email,password,image}),
           headers: {
             "Content-Type": "application/json",
           },
@@ -129,7 +132,7 @@ input[type="password"]:focus {
         }).then(res => {
           res.json().then(data => {
             console.log(data);
-            location.reload();
+            // location.reload();
           })
         })
     }
